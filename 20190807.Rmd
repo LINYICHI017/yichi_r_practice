@@ -7,13 +7,29 @@ This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute
 
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 
-When to use `
+# When to use `
+
 ```{r}
 `107 上學期我的平均成績` <- 90
 ```
 
+# numeric class
 
+```{r}
+class(2)
+```
 
+```{r}
+a <- 5
+a2 <- 5L
+class(a2)
+```
+
+```{r}
+aVector <- c(5,6,7)
+aVector2 <- c(5L,6L,7L)
+5-5L
+```
 
 
 
