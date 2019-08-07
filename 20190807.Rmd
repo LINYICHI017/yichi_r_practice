@@ -7,6 +7,22 @@ This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute
 
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 
+When to use `
+```{r}
+`107 上學期我的平均成績` <- 90
+```
+
+
+
+
+
+
+
+
+
+
+
+
 ```{r}
 plot(cars)
 ```
