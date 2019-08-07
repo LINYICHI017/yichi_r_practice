@@ -1,6 +1,8 @@
 ---
-title: "2019-08-07"
-output: html_notebook
+title: '2019-08-07'
+output:
+  html_document:
+    df_print: paged
 ---
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
@@ -31,13 +33,102 @@ aVector2 <- c(5L,6L,7L)
 5-5L
 ```
 
+```{r}
+b <- "你好"
+bVector <- c("你好", "How are u")
+class(b)
+class(bVector)
+```
+
+# 使用 cat() 時需要用"\n"來做結尾，如果不用下次使用時會印在同一列
+
+```{r}
+cat(c(1,2,3),"abc","de")
+cat(c(1,2,3),"abc","de\n")
+cat(c(1,2,3),"abc","de\n",sep = "n" ) 
+cat(c(1,2,3),"abc","de\n",sep = "\n") 
+
+```
+
+
+```{r}
+dialogue <- c('小明說:"明天不用上課。"', '小花說:"真的好嗎？"')
+dialogue
+cat(dialogue, sep = "\n")
+dialogue1 <- c("小明說:'明天不用上課。'", "小花說:'真的好嗎？'")
+cat(dialogue1, sep = "\n")
+```
+
+# levels 會顯示順序整數值: 法律系存成 1; 經濟系存成 2
+# 但螢幕上會顯示類別值
+# R 有很多 as.() 的函式，協助轉換物件
+```{r}
+studentMajor <- factor(c("經濟系","經濟系","法律系"))
+studentMajor
+typeof(studentMajor) 
+levels(studentMajor)
+as.integer(studentMajor)
+stringInteger <- c("1","2","-11")
+class(stringInteger)
+
+trueInteger <- as.integer(stringInteger)
+class(trueInteger)
+```
+
+
+# lubridate
+```{r}
+library(tidyverse)
+library(lubridate)
+dtObject <- ymd_hms("1970-01-01 00:02:53")
+dtObjectVector <- ymd_hms(
+  c("1970-01-01 00:02:53",
+    "1980-02-11 11:25:22"
+  ))
+class(dtObject) 
+
+Sys.timezone() # 顯示電腦時區
+twDateTime <- ymd_hms("2019-08-07 11:19:00", tz = "Asia/Taipei")
+twDateTime
+as.integer
+as.integer(twDateTime - dtObject)
+ListbonDateTime <- with_tz(twDateTime, tz = "Europe/Lisbon")
+ListbonDateTime
+
+typeof(dtObject)
+as.integer(dtObject) # 顯示秒數
+as.double(twDateTime) # 較正確
+
+ymd("2018-09-11") %>% as.integer()
+mdy("March 3, 2019") %>% as.integer()
+```
+
+
+```{r}
+twDateTime
+
+twDateTime + 1 # 加一是加一秒的意思
+
+as.double(ymd("2010-10-10") - ymd("2010-10-01"))
+
+startingDate <- ymd("2000-02-17")
+
+startingDate + years(1) # 過一年後的那個日子
+startingDate + dyears(1) # 整整的一年 
+
+```
+
+
+```{r}
+x4 <- c(1,5,8)
+x3 <- c(1,5)
+
+x4 %in% x3
 
 
 
 
-
-
-
+```
 
 ```{r}
 plot(cars)
